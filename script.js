@@ -50,7 +50,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function updateCard() {
         var game = games[currentIndex];
-        gameCard.innerHTML = '<img class="game-img" src="' + game.img + '"><h2>' + game.title + '</h2><p>' + game.description + '</p><p>' + game.genre + '</p><p>' + game.price + ' ₽' + '</p>';
+        gameCard.style.opacity = '0';
+        setTimeout(function() {
+            gameCard.innerHTML = '<img class="game-img" src="' + game.img + '"><h2>' + game.title + '</h2><p>' + game.description + '</p><p>' + game.genre + '</p><p>' + game.price + '</p>';
+            gameCard.style.opacity = '1';
+        }, 300);
     }
 
     document.getElementById('prev').addEventListener('click', function() {
