@@ -47,12 +47,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var gameCard = document.getElementById('game-card');
     var currentIndex = 0;
-
+    
     function updateCard() {
         var game = games[currentIndex];
         gameCard.style.opacity = '0';
         setTimeout(function() {
-            gameCard.innerHTML = '<img class="game-img" src="' + game.img + '"><h2>' + game.title + '</h2><p>' + game.description + '</p><p>' + game.genre + '</p><p>' + game.price + '</p>';
+            gameCard.innerHTML = '<img class="game-img" src="' + game.img + '"><h2 class="game-title">' + game.title + '</h2><p>' + game.description + '</p><p>' + game.genre + '</p><p class="game-price">' + game.price + ' ₽' +'</p>';
             gameCard.style.opacity = '1';
         }, 300);
     }

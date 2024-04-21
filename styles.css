@@ -73,10 +73,20 @@ body {
     max-height: 100%;
 }
 
+.game-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
 .game-img {
     width: 100%;
     height: auto;
     border-radius: 50px;
+}
+
+.game-price {
+    font-size: 20px;
+    margin-left: auto;
 }
 
 .arrow-button {
@@ -107,4 +117,9 @@ body {
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+
+.footer_content a {
+    color: white; /* Сделать текст ссылок белым */
+    text-decoration: none; /* Убрать подчеркивания */
 }
