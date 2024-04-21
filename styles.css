@@ -179,6 +179,45 @@ body {
     opacity: 1;
 }
 
+/* Игры */
+.games-list-column {
+    flex: 1;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.game-item {
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.game-image img {
+    width: 120px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.game-title {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.game-info {
+    flex: 1;
+    margin-right: 20px;
+    color: white;
+}
+
+.game-price {
+    width: 70px;
+    text-align: right;
+    color: white;
+}
+
 /* Footer */
 #footer {
     background-color: #1b2838;

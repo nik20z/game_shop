@@ -17,19 +17,19 @@ document.addEventListener('DOMContentLoaded', function() {
         
     ];
 
-    var games = [
+    var gamesCarousel = [
         { 
             title: 'DayZ', 
             description: 'Как долго вы сможете выжить в пост-апокалипсисе? Мир пал под натиском зараженных. Боритесь против других выживших за ограниченные ресурсы. Сможете ли вы работать сообща с незнакомцами? Или станете волком-одиночкой? Это ваша история, это DayZ.', 
             genre: 'Выживание', 
-            price: '1 499', 
+            price: '1499', 
             img: 'dayz.jpg'
         },
         { 
             title: "Baldur's Gate 3", 
             description: 'Соберите отряд и вернитесь в Забытые Королевства. Вас ждет история о дружбе и предательстве, выживании и самопожертвовании, о сладком зове абсолютной власти.', 
             genre: 'Ролевая игра', 
-            price: '1 999', 
+            price: '1999', 
             img: 'baldurs_gate.jpg'
         },
         { 
@@ -63,11 +63,58 @@ document.addEventListener('DOMContentLoaded', function() {
         
     ];
 
+    var games = [
+        { 
+            title: 'ELDEN RING', 
+            genre: 'Жанр 1', 
+            price: '3599', 
+            image: 'elden_ring.jpg' 
+        },
+        { 
+            title: 'Ready or Not', 
+            genre: 'Жанр 2', 
+            price: '1600', 
+            image: 'ready_or_not.jpg'
+        },
+        { 
+            title: 'Rust', 
+            genre: 'Жанр 2', 
+            price: '1100', 
+            image: 'rust.jpg'
+        },
+        { 
+            title: 'Dota 2', 
+            genre: 'Жанр 1', 
+            price: '299', 
+            image: 'dota_2.jpg' 
+        },
+        { 
+            title: 'Arma 3', 
+            genre: 'Жанр 1', 
+            price: '499', 
+            image: 'arma_3.jpg' 
+        },
+        { 
+            title: 'Squad', 
+            genre: 'Жанр 1', 
+            price: '499', 
+            image: 'squad.jpg' 
+        },
+        { 
+            title: "Garry's mod", 
+            genre: 'Жанр 1', 
+            price: '750', 
+            image: 'garrys_mod.jpg' 
+        }
+    ];
+
     var newsColumn = document.querySelector('.news-column');
 
     var gameCard = document.getElementById('game-card');
     var currentIndex = 0;
     var intervalId;
+
+    var gamesListColumn = document.querySelector('.games-list-column');
 
     // Новости
     function createNewsHTML(newsItem) {
@@ -94,10 +141,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Карусель
     function updateCard() {
-        var game = games[currentIndex];
+        var game = gamesCarousel[currentIndex];
         gameCard.style.animation = 'none';
         setTimeout(function() {
-            gameCard.innerHTML = '<img class="game-img" src="' + dirImages + 'games/' + game.img + '"><h2 class="game-title">' + game.title + '</h2><p>' + game.description + '</p><p>' + game.genre + '</p><p class="game-price">' + game.price + ' ₽' +'</p>';
+            gameCard.innerHTML = '<img class="game-img" src="' + dirImages + 'gamesCarousel/' + game.img + '"><h2 class="game-title">' + game.title + '</h2><p>' + game.description + '</p><p>' + game.genre + '</p><p class="game-price">' + game.price + ' ₽' +'</p>';
             gameCard.style.animation = 'slideIn 0.5s ease';
         }, 50);
 
@@ -106,12 +153,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function nextSlide() {
-        currentIndex = (currentIndex < games.length - 1) ? currentIndex + 1 : 0;
+        currentIndex = (currentIndex < gamesCarousel.length - 1) ? currentIndex + 1 : 0;
         updateCard();
     }
 
     document.getElementById('prev').addEventListener('click', function() {
-        currentIndex = (currentIndex > 0) ? currentIndex - 1 : games.length - 1;
+        currentIndex = (currentIndex > 0) ? currentIndex - 1 : gamesCarousel.length - 1;
         updateCard();
     });
 
@@ -122,4 +169,27 @@ document.addEventListener('DOMContentLoaded', function() {
     intervalId = setInterval(nextSlide, 5000);
 
     updateCard();
+
+    // Игры
+    function createGameHTML(gameItem) {
+        var gameHTML = '<div class="game-item">';
+        gameHTML += '<div class="game-image"><img src="' + dirImages + 'games/' + gameItem.image + '" alt="' + gameItem.title + '"></div>';
+        gameHTML += '<div class="game-info">';
+        gameHTML += '<h3 class="game-title">' + gameItem.title + '</h3>';
+        gameHTML += '<p class="game-genre">' + gameItem.genre + '</p>';
+        gameHTML += '</div>';
+        gameHTML += '<div class="game-price">' + gameItem.price + ' ₽' + '</div>';
+        gameHTML += '</div>';
+        return gameHTML;
+    }
+
+    function fillGamesListColumn() {
+        var gamesHTML = '';
+        games.forEach(function(gameItem) {
+            gamesHTML += createGameHTML(gameItem);
+        });
+        gamesListColumn.innerHTML = gamesHTML;
+    }
+
+    fillGamesListColumn();
 });
