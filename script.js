@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var gameCard = document.getElementById('game-card');
     var currentIndex = 0;
-    
+
     function updateCard() {
         var game = games[currentIndex];
         gameCard.style.opacity = '0';
@@ -57,15 +57,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 300);
     }
 
+    function nextSlide() {
+        currentIndex = (currentIndex < games.length - 1) ? currentIndex + 1 : 0;
+        updateCard();
+    }
+
     document.getElementById('prev').addEventListener('click', function() {
         currentIndex = (currentIndex > 0) ? currentIndex - 1 : games.length - 1;
         updateCard();
     });
 
     document.getElementById('next').addEventListener('click', function() {
-        currentIndex = (currentIndex < games.length - 1) ? currentIndex + 1 : 0;
-        updateCard();
+        nextSlide();
     });
+
+    setInterval(nextSlide, 5000);
 
     updateCard();
 });
