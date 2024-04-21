@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var gameCard = document.getElementById('game-card');
     var currentIndex = 0;
+    var intervalId;
 
     function updateCard() {
         var game = games[currentIndex];
@@ -55,6 +56,9 @@ document.addEventListener('DOMContentLoaded', function() {
             gameCard.innerHTML = '<img class="game-img" src="' + game.img + '"><h2 class="game-title">' + game.title + '</h2><p>' + game.description + '</p><p>' + game.genre + '</p><p class="game-price">' + game.price + ' ₽' +'</p>';
             gameCard.style.animation = 'slideIn 0.5s ease';
         }, 50);
+        
+        clearInterval(intervalId);
+        intervalId = setInterval(nextSlide, 5000);
     }
 
     function nextSlide() {
@@ -71,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
         nextSlide();
     });
 
-    setInterval(nextSlide, 5000);
+    intervalId = setInterval(nextSlide, 5000);
 
     updateCard();
 });
