@@ -68,13 +68,14 @@ body {
 .carousel-column {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 
 /* Новости */
 .news-column {
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
+    max-width: 500px;
 }
 
 .news-column h2 {
@@ -129,7 +130,7 @@ body {
 }
 
 #game-card {
-    width: 600px;
+    width: 500px;
     margin: 10px;
     padding: 20px;
     border: 1px solid #1b2838;
@@ -181,6 +182,7 @@ body {
 .games-list-column {
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
+    max-width: 500px;
 }
 
 .games-list-column h2 {
