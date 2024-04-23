@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var dirImages = 'img/';
+    var dirImages = 'img/';  // Путь до папки с картинками
 
+    // Массив данных о Новостях
     var news = [
         { 
             title: 'Вышла «Смута» — самая громкая российская игра за последние месяцы. Что о ней стоит знать?', 
@@ -14,22 +15,22 @@ document.addEventListener('DOMContentLoaded', function() {
             date: '17 апреля, 20:55',
             image: '2.webp' 
         },
-        
     ];
 
+    // Массив данных игр в Карусели
     var gamesCarousel = [
         { 
             title: 'DayZ', 
             description: 'Как долго вы сможете выжить в пост-апокалипсисе? Мир пал под натиском зараженных. Боритесь против других выживших за ограниченные ресурсы. Сможете ли вы работать сообща с незнакомцами? Или станете волком-одиночкой? Это ваша история, это DayZ.', 
             genre: 'Выживание', 
-            price: '1499', 
+            price: '1 499', 
             img: 'dayz.jpg'
         },
         { 
             title: "Baldur's Gate 3", 
             description: 'Соберите отряд и вернитесь в Забытые Королевства. Вас ждет история о дружбе и предательстве, выживании и самопожертвовании, о сладком зове абсолютной власти.', 
             genre: 'Ролевая игра', 
-            price: '1999', 
+            price: '1 999', 
             img: 'baldurs_gate.jpg'
         },
         { 
@@ -63,60 +64,65 @@ document.addEventListener('DOMContentLoaded', function() {
         
     ];
 
+    // Массив данных Игр
     var games = [
         { 
             title: 'ELDEN RING', 
-            genre: 'Жанр 1', 
-            price: '3599', 
+            genre: 'Action/RPG', 
+            price: '3 599', 
             image: 'elden_ring.jpg' 
         },
         { 
             title: 'Ready or Not', 
-            genre: 'Жанр 2', 
-            price: '1600', 
+            genre: 'Тактический шутер', 
+            price: '1 600', 
             image: 'ready_or_not.jpg'
         },
         { 
             title: 'Rust', 
-            genre: 'Жанр 2', 
-            price: '1100', 
+            genre: 'Шутер от первого лица', 
+            price: '1 100', 
             image: 'rust.jpg'
         },
         { 
             title: 'Dota 2', 
-            genre: 'Жанр 1', 
+            genre: 'MOBA', 
             price: '299', 
             image: 'dota_2.jpg' 
         },
         { 
             title: 'Arma 3', 
-            genre: 'Жанр 1', 
+            genre: 'Тактический шутер', 
             price: '499', 
             image: 'arma_3.jpg' 
         },
         { 
             title: 'Squad', 
-            genre: 'Жанр 1', 
+            genre: 'Тактический шутер', 
             price: '499', 
             image: 'squad.jpg' 
         },
         { 
             title: "Garry's mod", 
-            genre: 'Жанр 1', 
+            genre: 'Шутер от первого лица', 
             price: '750', 
             image: 'garrys_mod.jpg' 
         }
     ];
 
+    // Колонка с Новостями
     var newsColumn = document.querySelector('.news-column');
 
+    // Переменные Карусели
     var gameCard = document.getElementById('game-card');
     var currentIndex = 0;
     var intervalId;
 
+    // Колонка с Играми
     var gamesListColumn = document.querySelector('.games-list-column');
 
-    // Новости
+    // --- Новости ---
+    // Создать HTML-объект Новости 
     function createNewsHTML(newsItem) {
         var newsHTML = '<div class="news-item">';
         if (newsItem.image) {
@@ -129,17 +135,17 @@ document.addEventListener('DOMContentLoaded', function() {
         return newsHTML;
     }
 
+    // Заполнить колонку Новостями
     function fillNewsColumn() {
         var newsHTML = '';
         news.forEach(function(newsItem) {
             newsHTML += createNewsHTML(newsItem);
         });
-        newsColumn.innerHTML = newsHTML;
+        newsColumn.insertAdjacentHTML('beforeend', newsHTML);
     }
 
-    fillNewsColumn();
-
-    // Карусель
+    // --- Карусель ---
+    // Заполнить карточки (слайды) в Карусели 
     function updateCard() {
         var game = gamesCarousel[currentIndex];
         gameCard.style.animation = 'none';
@@ -152,25 +158,25 @@ document.addEventListener('DOMContentLoaded', function() {
         intervalId = setInterval(nextSlide, 5000);
     }
 
+    // Перелистывание слайдов с играми
     function nextSlide() {
         currentIndex = (currentIndex < gamesCarousel.length - 1) ? currentIndex + 1 : 0;
         updateCard();
     }
 
+    // Обработка нажатия кнопки "Назад"
     document.getElementById('prev').addEventListener('click', function() {
         currentIndex = (currentIndex > 0) ? currentIndex - 1 : gamesCarousel.length - 1;
         updateCard();
     });
 
+    // Обработка нажатия кнопки "Вперед"
     document.getElementById('next').addEventListener('click', function() {
         nextSlide();
     });
 
-    intervalId = setInterval(nextSlide, 5000);
-
-    updateCard();
-
-    // Игры
+    // --- Игры ---
+    // Создать HTML-объект Игры 
     function createGameHTML(gameItem) {
         var gameHTML = '<div class="game-item">';
         gameHTML += '<div class="game-image"><img src="' + dirImages + 'games/' + gameItem.image + '" alt="' + gameItem.title + '"></div>';
@@ -183,13 +189,20 @@ document.addEventListener('DOMContentLoaded', function() {
         return gameHTML;
     }
 
+    // Заполнить колонку Играми
     function fillGamesListColumn() {
         var gamesHTML = '';
         games.forEach(function(gameItem) {
             gamesHTML += createGameHTML(gameItem);
         });
-        gamesListColumn.innerHTML = gamesHTML;
+        gamesListColumn.insertAdjacentHTML('beforeend', gamesHTML);
     }
 
+    // Настройка автоперелистывания Карусели
+    intervalId = setInterval(nextSlide, 5000);
+
+    // Заполнение страницы контентом
+    fillNewsColumn();
+    updateCard();
     fillGamesListColumn();
 });

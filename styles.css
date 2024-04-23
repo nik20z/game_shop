@@ -73,8 +73,6 @@ body {
 
 /* Новости */
 .news-column {
-    flex: 1;
-    padding: 20px;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
 }
@@ -144,7 +142,7 @@ body {
 }
 
 .game-title {
-    font-size: 24px;
+    font-size: 32px;
     margin-bottom: 10px;
 }
 
@@ -181,10 +179,16 @@ body {
 
 /* Игры */
 .games-list-column {
-    flex: 1;
-    padding: 20px;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
+}
+
+.games-list-column h2 {
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
 }
 
 .game-item {
@@ -193,6 +197,7 @@ body {
     align-items: center;
     padding: 10px;
     border-bottom: 1px solid #ccc;
+    transition: transform 0.3s ease;
 }
 
 .game-image img {
@@ -215,7 +220,11 @@ body {
 .game-price {
     width: 70px;
     text-align: right;
-    color: white;
+    color: Lime;
+}
+
+.game-item:hover {
+    transform: scale(1.05);
 }
 
 /* Footer */
@@ -230,8 +239,8 @@ body {
 }
 
 .footer_content a {
-    color: white; /* Сделать текст ссылок белым */
-    text-decoration: none; /* Убрать подчеркивания */
+    color: white;
+    text-decoration: none;
 }
 
 
