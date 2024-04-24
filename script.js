@@ -164,10 +164,14 @@ document.addEventListener('DOMContentLoaded', function() {
         updateCard();
     }
 
-    // Обработка нажатия кнопки "Назад"
-    document.getElementById('prev').addEventListener('click', function() {
+    function prevSlide() {
         currentIndex = (currentIndex > 0) ? currentIndex - 1 : gamesCarousel.length - 1;
         updateCard();
+    }
+
+    // Обработка нажатия кнопки "Назад"
+    document.getElementById('prev').addEventListener('click', function() {
+        prevSlide();
     });
 
     // Обработка нажатия кнопки "Вперед"
