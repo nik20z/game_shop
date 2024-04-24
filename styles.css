@@ -80,7 +80,6 @@ body {
 
 .news-column h2 {
     font-size: 24px;
-    color: #333;
     text-align: center;
     margin-bottom: 20px;
     color: white;
@@ -108,13 +107,11 @@ body {
 }
 
 .news-excerpt {
-    color: #666;
     margin-bottom: 10px;
     color: white;
 }
 
 .news-date {
-    color: #999;
     font-size: 14px;
     color: white;
 }
@@ -187,7 +184,6 @@ body {
 
 .games-list-column h2 {
     font-size: 24px;
-    color: #333;
     text-align: center;
     margin-bottom: 20px;
     color: white;
