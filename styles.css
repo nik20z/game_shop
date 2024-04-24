@@ -6,7 +6,6 @@ body {
     background-position: center;
     background-attachment: fixed;
     font-family: Arial, sans-serif;
-    color: #333;
 }
 
 #header {
@@ -21,7 +20,6 @@ body {
 }
 
 #header nav ul {
-    list-style-type: none;
     padding: 0;
 }
 
@@ -32,7 +30,6 @@ body {
 
 #header nav ul li a {
     color: white;
-    text-decoration: none;
 }
 
 #header nav ul li a:hover {
@@ -123,7 +120,6 @@ body {
     align-items: center;
     margin-top: 50px;
     height: 600px;
-    overflow: hidden;
 }
 
 #game-card {
